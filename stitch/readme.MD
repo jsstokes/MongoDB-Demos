@@ -11,15 +11,13 @@ What Does Stitch Provide? At a high level Stitch provides the following features
 ### Stitch QueryAnywhere
 
 Exposes the full power of working with documents in MongoDB and the MongoDB query language, directly from your web and mobile application frontend code. A powerful rules engine lets developers declare fine-grained security policies. 
-
 [QueryAnwhere Documentation](https://docs.mongodb.com/stitch/getting-started/configure-rules-based-access-to-mongodb/)
 
 
 ### Stitch Functions
 
 Allows developers to run simple JavaScript functions in the Stitch serverless platform, making it easy to implement application logic, securely integrate with cloud services and microservices, and build APIs
-
-_Documentation Link:_ https://docs.mongodb.com/stitch/functions/
+[Stitch Functions Documentation](https://docs.mongodb.com/stitch/functions/)
 
 ### Stitch Triggers
 
