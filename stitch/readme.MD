@@ -30,3 +30,5 @@ Automatically synchronizes data between documents held locally in MongoDB Mobile
   [Stitch Mobile Sync Documentation](https://docs.mongodb.com/stitch/mongodb/mobile-overview/)
 
 ## Getting Started
+
+The easiest way to get started is to follow the [MongoDB stitch tutorials](https://docs.mongodb.com/stitch/tutorials/). The best tutorial to begin with is the basic [blog tutorial](https://docs.mongodb.com/stitch/tutorials/build-blog/). This tutorial walks you through the steps of creating your own free tier MongoDB atlas cluster, introduces you to the stitch application web based GUI and shows you how to create your first application.
