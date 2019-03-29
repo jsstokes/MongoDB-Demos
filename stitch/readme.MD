@@ -2,7 +2,7 @@
 
 The MongoDB Stitch serverless platform makes it easy to build modern, cross-platform applications on top of MongoDB. Stitch removes the need for tedious boilerplate and automatically manages your app’s backend so you can focus on building what matters. Follow the links below to get started.
 
-![Serverless](img/serverless.png width:150 "Serverless")
+![Serverless](img/serverless100.png "Serverless")
 
 _SA Maintainer_: [Britton LaRoche](mailto:britton.laroche@mongodb.com)
 
