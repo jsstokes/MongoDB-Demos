@@ -13,6 +13,8 @@ What Does Stitch Provide? At a high level Stitch provides the following features
 Exposes the full power of working with documents in MongoDB and the MongoDB query language, directly from your web and mobile application frontend code. A powerful rules engine lets developers declare fine-grained security policies. 
 
 [Documentation Link:] (https://docs.mongodb.com/stitch/getting-started/configure-rules-based-access-to-mongodb/)
+[I'm an inline-style link](https://www.google.com)
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
 ### Stitch Functions
 
