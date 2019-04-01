@@ -16,9 +16,39 @@ XBOX ONE X Robot White 1 TB for each of the winning members
 
 # Getting Started
 <!-- How do teams use your tech? Do you have links to resources? Are there directories here that include sample projects? Enter text below: -->
-The absolute easiest path to using MongoDB is to utilize **Atlas** - our *Database-as-a-Service (DBaaS)* offering. Using **Atlas**, you can directly access MongoDB Atlas database from you web pages using Javascript - without the need for an intermediate Web Service or microservice by using our [QueryAnywhere](https://docs.mongodb.com/stitch/getting-started/configure-rules-based-access-to-mongodb/) Javascript SDK.  Using **MongoDB Atlass** also allows you to leverage [MongoDB Stitch](https://docs.mongodb.com/stitch/), our serverless, *Backend-as-a-Service*. 
+One of the core tenets of MongoDB is the ability to run anywhere.  This means you can run MongoDB in a wide variety of places: on your local machine, in your datacenter, in the cloud, and on your mobile device!
 
-## Documentation
+## MongoDB Atlas (in the cloud)
+The absolute easiest path to using MongoDB is to utilize **MongoDB Atlas** - our *Database-as-a-Service (DBaaS)* offering. We offer a truly free tier for **MongoDB Atlas** - and we don't even require a credit card.  Using **Atlas**, you can directly access MongoDB Atlas database from you web pages using Javascript - without the need for an intermediate Web Service or microservice by using our [QueryAnywhere](https://docs.mongodb.com/stitch/getting-started/configure-rules-based-access-to-mongodb/) Javascript SDK.  Using **MongoDB Atlass** also allows you to leverage [MongoDB Stitch](https://docs.mongodb.com/stitch/), our serverless, *Backend-as-a-Service*.
+
+### MongoDB Atlas/Stitch Related Links
+* [MongoDB Atlas](https://www.mongodb.com/cloud)
+* [MongoDB Stitch Documentation/Tutorials](https://docs.mongodb.com/stitch/)
+* [MongoDB Documentation](https://docs.mongodb.com/)
+* [MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)
+* [MongoDB Download page](https://www.mongodb.com/download-center/enterprise) - You may need to download the Full MongoDB product if you need access to backup/restore or import/export utilities.<br/><br/>If you only need the MongoDB Shell, you can [download the MongoDB Shell for Windows here](https://downloads.mongodb.org/win32/mongodb-shell-win32-x86_64-2008plus-ssl-4.0.8.zip).  For other operating systems, including Mac OSX and Linux, please refer to the *"Connect"* button in your Atlas cluster for download links. <br/><br/>
+* [MongoDB Compass](https://www.mongodb.com/download-center/compass) - As the GUI for MongoDB, MongoDB Compass allows you to make smarter decisions about document structure, querying, indexing, document validation, and more. Compass is available as part of our subscriptions.<BR/><BR/>
+MongoDB Compass is available in several versions, described below. For more information on version differences, see the [MongoDB Compass Documentation](https://docs.mongodb.com/compass/master/?_ga=2.167270397.237828379.1553986479-2088661027.1537206000).
+
+
+
+## On Your Local Machine
+If you choose to run MongoDB on your local machine, you will need to download and install MongoDB.  While this has historically been the most common method, there are several considrations when choosing this path:
+* security policies on your laptop may prevent software from being installed
+* firewalls on you local machine may block the port used my MongoDB (*default port is 27017*)
+* hardware characteristics of your machine (*such as amount of RAM and available HD space*) may impose issues
+
+###MongoDB (local) Related Links
+* [MongoDB Download page](https://www.mongodb.com/download-center/enterprise)
+* [MongoDB Documentation](https://docs.mongodb.com/)
+* [MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)
+* [MongoDB Compass](https://www.mongodb.com/download-center/compass) - As the GUI for MongoDB, MongoDB Compass allows you to make smarter decisions about document structure, querying, indexing, document validation, and more. Compass is available as part of our subscriptions.<BR/><BR/>
+MongoDB Compass is available in several versions, described below. For more information on version differences, see the [MongoDB Compass Documentation](https://docs.mongodb.com/compass/master/?_ga=2.167270397.237828379.1553986479-2088661027.1537206000).
+
+
+
+## MongoDB Mobile
+[MongoDB Mobile](https://www.mongodb.com/products/mobile)
 
 
 # Support
