@@ -17,7 +17,7 @@ XBOX ONE X Robot White 1 TB for **EACH** of the winning members!!<br/> <br/>
 
 # Getting Started
 <!-- How do teams use your tech? Do you have links to resources? Are there directories here that include sample projects? Enter text below: -->
-One of the core tenets of MongoDB is the ability to run anywhere.  This means you can run MongoDB in a wide variety of places: on your local machine, in your datacenter, in the cloud, and on your mobile device!
+One of the core tenets of MongoDB is the ability to run anywhere.  This means you can run MongoDB in a wide variety of places: on your local machine, in your datacenter, in the cloud, and even on your mobile device!
 
 ## MongoDB Atlas (in the cloud)
 The absolute easiest path to using MongoDB is to utilize **MongoDB Atlas** - our *Database-as-a-Service (DBaaS)* offering. We offer a truly free tier for **MongoDB Atlas** - and we don't even require a credit card.  Using **Atlas**, you can directly access MongoDB Atlas database from you web pages using Javascript - without the need for an intermediate Web Service or microservice by using our [QueryAnywhere](https://docs.mongodb.com/stitch/getting-started/configure-rules-based-access-to-mongodb/) Javascript SDK.  Using **MongoDB Atlass** also allows you to leverage [MongoDB Stitch](https://docs.mongodb.com/stitch/), our serverless, *Backend-as-a-Service*.
