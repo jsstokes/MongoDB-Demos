@@ -11,8 +11,9 @@ We're looking for the best and most innovative application of MongoDB, MongoDB A
 
 # Prize Info
 <!-- What is your sponsor prize? Is it one for each member? Enter text below: -->
-XBOX ONE X Robot White 1 TB for each of the winning members 
+XBOX ONE X Robot White 1 TB for **EACH** of the winning members!!<br/> <br/>
 [Xbox One X Robot White (1TB)](https://www.xbox.com/en-us/xbox-one/consoles/xbox-one-x/fallout-76-1tb-se)
+![](./xbox-image.jpg)
 
 # Getting Started
 <!-- How do teams use your tech? Do you have links to resources? Are there directories here that include sample projects? Enter text below: -->
