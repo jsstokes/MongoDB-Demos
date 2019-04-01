@@ -90,3 +90,12 @@ cell: 404-441-4450<br/>
 
 # More About Us
 <!-- Optional: Anything else you want to say! Enter text below: -->
+MongoDB was founded in 2007 by Dwight Merriman, Eliot Horowitz and Kevin Ryan – the team behind DoubleClick.
+
+At the Internet advertising company DoubleClick (now owned by Google), the team developed and used many custom data stores to work around the shortcomings of existing databases. The business served 400,000 ads per second, but often struggled with both scalability and agility. Frustrated, the team was inspired to create a database that tackled the challenges it faced at DoubleClick.
+
+MongoDB is the leading modern, general purpose database platform, designed to unleash the power of software and data for developers and the applications they build. Headquartered in New York, with offices across North America, Europe, and Asia-Pacific, we are close to where you do business. MongoDB has more than 13,000 customers in more than 100 countries. The MongoDB database platform has been downloaded over 60 million times and there have been more than 1 million MongoDB University registrations.
+
+## Our Mission: To free the genius within everyone by making data ridiculously easy to work with
+
+[more information can be found here](https://www.mongodb.com/company)
