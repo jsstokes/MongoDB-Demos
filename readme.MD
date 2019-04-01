@@ -24,7 +24,7 @@ The absolute easiest path to using MongoDB is to utilize **MongoDB Atlas** - our
 ### MongoDB Atlas/Stitch Related Links
 * [MongoDB Atlas](https://www.mongodb.com/cloud)
 * [MongoDB Stitch Documentation/Tutorials](https://docs.mongodb.com/stitch/)
-* [More Stitch information](./stitch)
+* [Getting Started with MongoDB Stitch - additional information](./stitch)
 * [MongoDB Documentation](https://docs.mongodb.com/)
 * [MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)
 * [MongoDB Download page](https://www.mongodb.com/download-center/enterprise) - You may need to download the Full MongoDB product if you need access to backup/restore or import/export utilities.<br/><br/>If you only need the MongoDB Shell, you can [download the MongoDB Shell for Windows here](https://downloads.mongodb.org/win32/mongodb-shell-win32-x86_64-2008plus-ssl-4.0.8.zip).  For other operating systems, including Mac OSX and Linux, please refer to the *"Connect"* button in your Atlas cluster for download links. <br/><br/>
