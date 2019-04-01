@@ -48,7 +48,10 @@ MongoDB Compass is available in several versions, described below. For more info
 
 
 ## MongoDB Mobile
-[MongoDB Mobile](https://www.mongodb.com/products/mobile)
+MongoDB Mobile brings the power of MongoDB and the document model to your device. Same database, same access patterns – from IoT, iOS, and Android mobile devices to your backend.
+
+### MongoDB Mobile Related Links
+* [MongoDB Mobile](https://www.mongodb.com/products/mobile)
 
 
 # Support
@@ -82,18 +85,6 @@ Kendrick Cummings<br/>
 slack: `@kendrick.cummings` <br/>
 email: kendrick.cummings@mongodb.com<br/>
 cell: 404-441-4450<br/>
-
-
-
-John Doe </br>
-Slack: `@john.doe` <!-- Use a first.last format --> </br>
-Email: john.doe@something.com <!-- We'll send a Slack invite to this address --> </br>
-Cell: (555) 555-5555 <!-- Optional --> </br>
-
-Jane Doe </br>
-Slack: `@jane.doe` <!-- Use a first.last format --> </br>
-Email: jane.doe@something.com <!-- We'll send a Slack invite to this address --> </br>
-Cell: (555) 555-5555 <!-- Optional --> </br>
 
 # More About Us
 <!-- Optional: Anything else you want to say! Enter text below: -->
