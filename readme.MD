@@ -98,4 +98,4 @@ MongoDB is the leading modern, general purpose database platform, designed to un
 
 ## Our Mission: To free the genius within everyone by making data ridiculously easy to work with
 
-[more information can be found here](https://www.mongodb.com/company)
+[https://www.mongodb.com/company](https://www.mongodb.com/company)
