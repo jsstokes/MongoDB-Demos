@@ -1,8 +1,8 @@
 {
 	"sponsorName": "MongoDB",
-	"prizeText": "XBOX ONE X Robot White 1 TB for EACH of the winning members!!",
+	"prizeText": "TBD",
 	"description": "MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.  We're looking for the best and most innovative application of MongoDB, MongoDB Atlas and MongoDB Stitch. Teams will be judged by the tech they produce and the creativity of the application built.",
-	"slackChannel": "[** We will add this **]",
-	"gheTopic": "[** We will add this **]",
+	"slackChannel": "hw-mongodb",
+	"gheTopic": "mongodb",
 	"keywords": "data database scalable flexible  modern document"
 }

@@ -4,16 +4,14 @@
 
 # MongoDB
 <!-- What does your company do? What makes you interesting? Why should a team use your tech? Enter text below: -->
-MongoDB is the leading modern, general purpose database platform, designed to unleash the power of software and data for developers and the applications they build. MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need. With products like MongoDB Atlas & MongoDB Stitch you can spend more time building apps than managing databases. 
+MongoDB is the leading modern, general purpose database platform, designed to unleash the power of software and data for developers and the applications they build. MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need. With products like MongoDB Atlas & MongoDB Stitch you can spend more time building apps than managing databases.
 # Challenge Info
 <!-- What are you looking for? How will teams be judged? Enter text below:  -->
-We're looking for the best and most innovative application of MongoDB, MongoDB Atlas and MongoDB Stitch. Teams will be judged by the tech they produce and the creativity of the application built. 
+We're looking for the best and most innovative application of MongoDB, MongoDB Atlas and MongoDB Stitch. Teams will be judged by the tech they produce and the creativity of the application built.
 
 # Prize Info
 <!-- What is your sponsor prize? Is it one for each member? Enter text below: -->
-XBOX ONE X Robot White 1 TB for **EACH** of the winning members!!<br/> <br/>
-[Xbox One X Robot White (1TB)](https://www.xbox.com/en-us/xbox-one/consoles/xbox-one-x/fallout-76-1tb-se)
-![](./xbox-image.jpg?s=200)
+TBD
 
 # Getting Started
 <!-- How do teams use your tech? Do you have links to resources? Are there directories here that include sample projects? Enter text below: -->
@@ -40,7 +38,7 @@ If you choose to run MongoDB on your local machine, you will need to download an
 * firewalls on you local machine may block the port used my MongoDB (*default port is 27017*)
 * hardware characteristics of your machine (*such as amount of RAM and available HD space*) may impose issues
 
-###MongoDB (local) Related Links
+### MongoDB (local) Related Links
 * [MongoDB Download page](https://www.mongodb.com/download-center/enterprise)
 * [MongoDB Documentation](https://docs.mongodb.com/)
 * [MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)
@@ -57,7 +55,7 @@ MongoDB Mobile brings the power of MongoDB and the document model to your device
 
 
 # Support
-Slack Channel: `#[We'll add this later]`
+Slack Channel: [`#hw-mongodb`](https://americanairlines.slack.com/messages/CHR7FC93Q)
 <!-- Other than asking for help from your team in our Slack workspace, how else can devs get help? Enter text below: -->
 
 ### Event Support
@@ -69,14 +67,14 @@ email: scott.stokes@mongodb.com <br/>
 Cell: 214-277-4402<br/>
 
 Alex Monasterio <br/>
-slack: `alex.monasterio` <br/>
+slack: `@alex.monasterio` <br/>
 email: alex.monasterio@mongodb.com <br/>
 cell: 210-262-0762 <br/>
 
 Britton LaRoche<br/>
 Slack: `@britton.laroche`<br/>
 email: britton.laroche@mongodb.com<br/>
-cell: 469-867-7881<br/> 
+cell: 469-867-7881<br/>
 
 James Holt<br/>
 slack: `@james.holt`<br/>
