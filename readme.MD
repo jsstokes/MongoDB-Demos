@@ -19,7 +19,7 @@ XBOX ONE X Robot White 1 TB for **EACH** of the winning members!!<br/> <br/>
 <!-- How do teams use your tech? Do you have links to resources? Are there directories here that include sample projects? Enter text below: -->
 One of the core tenets of MongoDB is the ability to run anywhere.  This means you can run MongoDB in a wide variety of places: on your local machine, in your datacenter, in the cloud, and even on your mobile device!
 
-## MongoDB Atlas (in the cloud)
+## MongoDB Atlas (DBaaS available on Azure, AWS, or GCP)
 The absolute easiest path to using MongoDB is to utilize **MongoDB Atlas** - our *Database-as-a-Service (DBaaS)* offering. We offer a truly free tier for **MongoDB Atlas** - and we don't even require a credit card.  Using **Atlas**, you can directly access MongoDB Atlas database from you web pages using Javascript - without the need for an intermediate Web Service or microservice by using our [QueryAnywhere](https://docs.mongodb.com/stitch/getting-started/configure-rules-based-access-to-mongodb/) Javascript SDK.  Using **MongoDB Atlass** also allows you to leverage [MongoDB Stitch](https://docs.mongodb.com/stitch/), our serverless, *Backend-as-a-Service*.
 
 ### MongoDB Atlas/Stitch Related Links
@@ -67,6 +67,11 @@ Scott Stokes <br/>
 Slack: `@scott.stokes`<br/>
 email: scott.stokes@mongodb.com <br/>
 Cell: 214-277-4402<br/>
+
+Alex Monasterio <br/>
+slack: `alex.monasterio` <br/>
+email: alex.monasterio@mongodb.com <br/>
+cell: 210-262-0762 <br/>
 
 Britton LaRoche<br/>
 Slack: `@britton.laroche`<br/>
