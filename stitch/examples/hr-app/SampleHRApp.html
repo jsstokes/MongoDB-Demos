@@ -1,0 +1,384 @@
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="./mystyle.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js">
+    //https://codepen.io/colorlib/pen/KVoZyv
+    //https://codepen.io/jordyvanraaij/pen/jlAqp
+    </script>
+    <script>
+        const client = stitch.Stitch.initializeDefaultAppClient('your-stitch-app-id');
+        const db = client.getServiceClient(stitch.RemoteMongoClient.factory,
+        "mongodb-atlas").db('Compliance');
+
+        function displayEmployeesOnLoad() {
+          client.auth.loginWithCredential(new stitch.AnonymousCredential())
+            .then(displayEmployees)
+            .then(displayDepartmentsOnLoad)
+            .catch(console.error);
+        }
+
+		function displayDepartmentsOnLoad() {
+          var searchDoc = {CODE_TYPE: "DEPARTMENT"};
+		  db.collection('codes').find(searchDoc, {limit: 1000}).asArray()
+			  .then(docs => {
+				const html = docs.map(c =>
+				"<option value=\"" +
+				c.VALUE + "\"" +
+				">" +
+				c.VALUE + " - " + c.DESCRIPTION +
+				"</option>").join("");
+				document.getElementById("departments").innerHTML = "<fieldset>" +
+                    "<select class=\"select-box\" id=\"dl_departments\">" +
+                    "<option value=\"\">Select Department</option> " + html +
+                    "</select></fieldset>";
+		  });
+        }
+
+		function displayStockDropList() {
+          var searchDoc = {CODE_TYPE: "STOCK"};
+		  db.collection('codes').find(searchDoc, {limit: 1000}).asArray()
+			  .then(docs => {
+				const html = docs.map(c =>
+				"<option value=\"" +
+				c.VALUE + "\"" +
+				">" +
+				c.VALUE + " - " + c.DESCRIPTION +
+				"</option>").join("");
+				document.getElementById("stocks").innerHTML = "<fieldset>" +
+                    "<select class=\"select-box\" id=\"dl_stockticker\">" +
+                    "<option value=\"\">Select Stock</option> " + html +
+                    "</select></fieldset>";
+		  });
+        }
+
+		function displayComplianceEventDropList(aComplianceEvent) {
+          var searchDoc = {CODE_TYPE: "COMPLIANCE_EVENT"};
+          var mysort = { VALUE: -1 };
+		  db.collection('codes').find(searchDoc, {sort: {"VALUE": -1}}, {limit: 1000}).asArray()
+			  .then(docs => {
+				const html = docs.map(c =>
+				"<option value=\"" +
+				c.VALUE + "\"" +
+				">" +
+				c.VALUE + " - " + c.DESCRIPTION +
+				"</option>").join("");
+				document.getElementById("compliance_event").innerHTML = "<fieldset>" +
+                    "<select class=\"select-box\" id=\"dl_compliance_event\">" +
+                    "<option value=\"" + aComplianceEvent +"\">Last Event: " + aComplianceEvent + "</option> " + html +
+                    "</select></fieldset>";
+                document.getElementById("compliance_event").value = aComplianceEvent;
+		  });
+        }
+        function displayEmployees() {
+          const tStrt = "<div><table class=\"blueTable\"><tr><th>Emp ID</th><th>Dept</th><th>Title</th>" +
+                "<th>Name</th><th>Reports to</th><th>work phone</th>" +
+                "<th>mobile phone</th><th>Email</th><th>Edit</th></tr>";
+          var searchDoc = {};
+          var seID = document.getElementById('s_employee_id');
+          var seFname = document.getElementById('s_first_name');
+          var seLname = document.getElementById('s_last_name');
+          var seDept = document.getElementById('s_department');
+          //build search doc based off user selections
+          if ( seDept.value != "" ) {
+                searchDoc = {department: seDept.value};
+          }
+          if ( seLname.value != "" ) {
+		  	searchDoc = {last_name: seLname.value};
+            if ( seDept.value != "" ) {
+                searchDoc = {last_name: seLname.value, department: seDept.value};
+            }
+          }
+          if ( seFname.value != "") {
+		         searchDoc = {first_name: seFname.value};
+		         if ( seLname.value != "") {
+				 	searchDoc = {first_name: seFname.value, last_name: seLname.value};
+                    if ( seDept.value != "" ) {
+                        searchDoc = {first_name: seFname.value, last_name: seLname.value, department: seDept.value};
+                    }
+          		 }
+          }
+          //if we have an employee id that overides name search
+          if (parseInt( seID.value) > 0 ) {
+          	searchDoc = {employee_id: parseInt(seID.value)};
+          }
+          db.collection('employees').find(searchDoc, {limit: 1000}).asArray()
+            .then(docs => {
+              const html = docs.map(c => "<tr><td>[" +
+                                    c.employee_id +  "]</td><td>" +
+                                    c.department +  "</td><td>" +
+                                    c.title + "</td><td>" +
+                                    c.first_name + " " +
+                                    c.last_name + "</td>" +
+                                    "<td>" +"[" + c.manager_id + "] </td>" +
+                                    //Get phones of an embedded object
+                                    //"<td>" + c.phones.work + "</td>" +
+                                    //"<td>" + c.phones.mobile + "</td>" +
+                                    //or get phones off the base document
+                                    "<td>" + c.work_phone + "</td>" +
+                                    "<td>" + c.mobile_phone + "</td>" +
+                                    "<td>" + c.email + "</td>" +
+                                    //can add last modified date to the table, but its long
+                                    //"<td>" + c.last_modified + "</td>" +
+                                    "<td><button type=\"checkbox\" class=\"blueTable\"" +
+                                    " onClick=\"editEmployee("+ c.employee_id
+                                    +")\"><i class=\"material-icons\" style=\"font-size:18px\">"+
+                                    "mode_edit</i></button></td>" +
+                                    "</tr>").join("");
+              document.getElementById("employees").innerHTML = tStrt + html + "</table></div>";
+            });
+
+        }
+
+		function findOneStock( aEID, aTicker, aQty ) {
+			var searchDoc = { employee_id: parseInt(aEID), "holdings.ticker": aTicker };
+			db.collection('employees').find(searchDoc, {limit: 1});
+		}
+
+        function addOneStock( aEID, aTicker, aQty ) {
+        	db.collection('employees').updateOne(
+				{ employee_id: parseInt(aEID) },
+				{ $addToSet: { "holdings": { ticker: aTicker, quantity: aQty } } }
+			);
+        }
+        function pullOneStock( aEID, aTicker ) {
+			db.collection('employees').updateOne(
+				{ employee_id: parseInt(aEID) },
+				{ $pull: { "holdings": { ticker: vdlticker.value } }	}
+			);
+        }
+
+		function remoteUpdateOneStock( aEID, aTicker, aQuantity ) {
+		    //client.callFunction("getCodes");
+			//https://docs.mongodb.com/stitch/functions/
+			if (aTicker != "") {
+				client.callFunction("updateOneStock", [aEID, aTicker, aQuantity]).then(editEmployee( aEID ));
+			}
+        }
+
+        function updateEmployeeHoldings() {
+			var vEID = document.getElementById("employee_id");
+			var vemail = document.getElementById("e_email");
+			var vlinkedin = document.getElementById("e_linkedin");
+			var vphoto = document.getElementById("e_photo");
+			var vdlticker = document.getElementById("dl_stockticker");
+			var vdlcompliance = document.getElementById("dl_compliance_event");
+			var vstockqty = document.getElementById("e_stockqty");
+			var nDate = new Date();
+            if (parseInt(vEID.value) > 0 ) {
+                db.collection('employees').updateOne(
+					{employee_id: parseInt(vEID.value)},
+					{$set: {
+						email: vemail.value,
+						linkedin: vlinkedin.value,
+						photo: vphoto.value,
+						compliance_event: vdlcompliance.value,
+						//holdings: { ticker: vdlticker.value, quantity: vstockqty.value },
+						trace_id: "Emp ID: " + vEID.value + " - " + nDate.toString()
+						}
+					}
+				).then(remoteUpdateOneStock(vEID.value, vdlticker.value, vstockqty.value));
+
+            } else {
+                alert("Can not find employee id to update");
+            }
+
+        }
+
+        function editEmployee(aEID) {
+        //build the html for dynamically displaying additional fields to edit
+        editSearchDoc = {employee_id: parseInt(aEID)};
+		db.collection('employees').find(editSearchDoc, {limit: 1}).asArray()
+		.then(docs => {
+			var veID  = docs.map(e => e.employee_id);
+			var vfname  = docs.map(e => e.first_name);
+			var vlname  = docs.map(e => e.last_name);
+			var vtitle  = docs.map(e => e.title);
+			var vdept  = docs.map(e => e.department);
+			var vcompliance = docs.map(e => e.compliance_event);
+			var vmanagerid = docs.map(e => e.manager_id);
+			//can get the phones off the object or the base document
+			//var vwork = docs.map(e => e.phones.work );
+			//var vmobile = docs.map(e => e.phones.mobile);
+			var vwork = docs.map(e => e.work_phone );
+			var vmobile = docs.map(e => e.mobile_phone);
+			var vemail = docs.map(e => e.email);
+			var vlinkedin = docs.map(e => e.linkedin);
+			var vphoto = docs.map(e => e.photo);
+			if (! vphoto || vphoto == "" ){
+				vphoto = "person.png";
+			}
+			var vlastmodified = docs.map(e => e.last_modified);
+			var vholdings = docs.map(e => e.holdings);
+			var vstockhtml = "";
+			var j = 0;
+			/*
+			//One way to loop through the holdings array
+			docs.map(e => {
+				if (e.holdings) {
+					j = e.holdings.length;
+					for ( i = 0; i < j; i++ ) {
+						vstockhtml = vstockhtml + "<h4>" + e.holdings[i].ticker +
+						": " + e.holdings[i].quantity + "</h4>\n";
+						}
+				}
+			});
+			*/
+			//Another way to loop through the holdings array
+			docs.map(e => {
+				if (e.holdings) {
+					e.holdings.forEach( function(myDoc) {
+						vstockhtml = vstockhtml + "<h4>"+ myDoc.ticker +
+						": " + myDoc.quantity + "</h4>";
+					});
+				}
+			});
+			document.getElementById("employee_id").value = veID;
+			document.getElementById("first_name").value = vfname;
+			document.getElementById("last_name").value = vlname;
+			document.getElementById("title").value = vtitle;
+			document.getElementById("dl_departments").value = vdept;
+			document.getElementById("manager_id").value = vmanagerid;
+			document.getElementById("work_phone").value = vwork;
+			document.getElementById("mobile_phone").value = vmobile;
+
+			html = "<h3>Employee Details</h3>" +
+			 "<h4>Update additional information</h4><br>" +
+			 "<div id=\"compliance_event\"></div>" +
+			 "<img src=\"" + vphoto + "\"  width=\"150px\">" +
+			 "<h4>Employee ID: " + veID + "</h4>" +
+			 "<h4>First Name: " + vfname + "</h4>" +
+			 "<h4>Last Name: " + vlname + "</h4>" +
+			 "<a href=\""+ vlinkedin + "\" target=\"_blank\" ><h4>LinkedIn Profile<h4></a>" +
+			 "<h4>Last Compliance Event: " + vcompliance + "</h4>" +
+			 "<h4>Last Modified: " + vlastmodified + "</h4>" +
+			 "<fieldset><input type=\"text\" placeholder=\"Email\" id=\"e_email\"></fieldset>" +
+			 "<fieldset><input type=\"text\" placeholder=\"LinkedIn\" id=\"e_linkedin\"></fieldset>" +
+			 "<fieldset><input type=\"text\" placeholder=\"Photo\" id=\"e_photo\"></fieldset>" +
+			 "<hr><h3>Holdings:</h3><h4>Entery Quantity Held</h4>" +
+			 vstockhtml +
+			 "<div id=\"stocks\"></div><fieldset><input type=\"text\" placeholder=\"Quantity\" id=\"e_stockqty\"></fieldset>" +
+			 "<button type=\"submit\" id=\"contact-submit\" onClick=\"updateEmployeeHoldings()\">Update</button>" +
+			 "<button type=\"submit\" id=\"contact-submit\" onClick=\"displayEmployees()\">Return to List</button>"
+			 ;
+
+			 document.getElementById("employees").innerHTML = html;
+
+			 if (vemail != "" ){
+				document.getElementById("e_email").value = vemail;
+			 }
+
+			 if (vlinkedin != "" ){
+				document.getElementById("e_linkedin").value = vlinkedin;
+			 }
+			 if (vlinkedin != "" ){
+				document.getElementById("e_photo").value = vphoto;
+			 }
+			 displayStockDropList();
+			 displayComplianceEventDropList(vcompliance);
+
+			});
+        }
+
+
+        function addEmployee() {
+            const eID = document.getElementById('employee_id');
+            if ( parseInt(eID.value)> 0) {
+				const eFname = document.getElementById('first_name');
+				const eLname = document.getElementById('last_name');
+				const eTitle = document.getElementById('title');
+				const eDepartment = document.getElementById('dl_departments');
+                if (eDepartment.value == ""){
+                    alert("Please Select a Department");
+                    return;
+                }
+				const eManagerId = document.getElementById('manager_id');
+				const eWorkPhone = document.getElementById('work_phone');
+				const eMobilePhone = document.getElementById('mobile_phone');
+				var nDate = new Date();
+				const employee = {
+					owner_id : client.auth.user.id,
+					employee_id: parseInt(eID.value),
+					first_name: eFname.value,
+					last_name: eLname.value,
+					title: eTitle.value,
+					department: eDepartment.value,
+					manager_id: parseInt(eManagerId.value),
+					last_modified: nDate
+				}
+				//db.collection('employees').insertOne(employee);
+				db.collection('employees').updateOne(
+					{employee_id: parseInt(eID.value)},
+					{$set: {
+						owner_id: client.auth.user.id,
+						employee_id: parseInt(eID.value),
+						first_name: eFname.value,
+						last_name: eLname.value,
+						title: eTitle.value,
+						department: eDepartment.value,
+						manager_id: parseInt(eManagerId.value),
+						last_modified: nDate,
+						//can create an object if you like
+						phones: { work: eWorkPhone.value, mobile: eMobilePhone.value },
+						//or flatten the document like below
+						work_phone: eWorkPhone.value,
+						mobile_phone: eMobilePhone.value,
+						trace_id: "Emp ID: " + eID.value + " - " + nDate.toString()
+						}
+					},
+					{upsert: true}
+				)
+				.then(displayEmployees);
+				//eFname.value = '';
+				//eLname.value = '';
+				//eID.value = '';
+			} else {
+				alert("Employee ID is required");
+			}
+        }
+    </script>
+
+    </head>
+  <body onload="displayEmployeesOnLoad()">
+
+<table>
+	<tr>
+	<td>
+		<div id="contact" class="container">
+			   <h3>Employee Search</h3>
+			   <h4>Search Criteria</h4>
+			   <fieldset><input placeholder="Employee ID" type="text" id="s_employee_id"></fieldset>
+			   <fieldset><input type="text" placeholder="First Name" id="s_first_name"></fieldset>
+			   <fieldset><input type="text" placeholder="Last Name" id="s_last_name"></fieldset>
+               <fieldset><input type="text" placeholder="Dept" id="s_department"></fieldset>
+			<button type="submit" id="contact-submit" onClick="displayEmployees()">Search</button>
+		<br>
+		<hr>
+		<br>
+		  <h3>Enter Employee Data</h3>
+		  <h4>Add Employee:</h4>
+		  <fieldset><input type="text" placeholder="Employee ID:" id="employee_id"></fieldset>
+		  <div id="departments"></div>
+		  <fieldset><input type="text" placeholder="First Name:" id="first_name"></fieldset>
+		  <fieldset><input type="text"  placeholder="Last Name:" id="last_name"></fieldset>
+		  <fieldset><input type="text" placeholder="Title:" id="title"></fieldset>
+		  <fieldset><input type="text" placeholder="Manager Id:" id="manager_id"></fieldset>
+		  <fieldset><input type="text" placeholder="Office Phone:" id="work_phone"></fieldset>
+		  <fieldset><input type="text" placeholder="Mobile Phone" id="mobile_phone"></fieldset>
+		  <button type="submit" id="contact-submit" onClick="addEmployee()">Submit</button>
+		</div>
+	</td>
+	<td>
+	<div id="contact">
+      Employee List:
+		<div id="employees"><h3>Loading...<h3></div>
+		<img src="./mdb.png" width="150px">
+	</div>
+	</td>
+
+	</tr>
+	</table>
+
+  </body>
+
+</html>
