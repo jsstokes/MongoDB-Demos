@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5bbcfb9512f9bb2fb49a8ea9"},"CODE_TYPE":"DEPARTMENT","VALUE":"SALES","DESCRIPTION":"Sales Department"}
+{"_id":{"$oid":"5bbcfbe412f9bb2fb49a8eaa"},"CODE_TYPE":"DEPARTMENT","VALUE":"DEV","DESCRIPTION":"Development Department"}
+{"_id":{"$oid":"5bbd4f7912f9bb2fb49a8eac"},"CODE_TYPE":"DEPARTMENT","VALUE":"HR","DESCRIPTION":"Human Resources"}
+{"_id":{"$oid":"5bbeed901349b81340f74c79"},"CODE_TYPE":"STOCK","VALUE":"ORCL","DESCRIPTION":"Oracle Corporation"}
+{"_id":{"$oid":"5bbeede81349b81340f74c7a"},"CODE_TYPE":"STOCK","VALUE":"MDB","DESCRIPTION":"MongoDB Inc"}
+{"_id":{"$oid":"5bbeeef91349b81340f74c7b"},"CODE_TYPE":"STOCK","VALUE":"AMZN","DESCRIPTION":"Amazon.com, Inc"}
